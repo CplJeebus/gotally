@@ -88,11 +88,9 @@ func main() {
 		log.Fatalf("Unable to retrieve Sheets client: %v", err)
 	}
 
-	// Prints the names and majors of students in a sample spreadsheet:
-	// https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-
+	s := sheets.SpreadsheetProperties{Title: "My test sheet"}
 	rb := &sheets.Spreadsheet{
-		// TODO: Add desired fields of the request body.
+		Properties: &s,
 	}
 
 	resp, err := srv.Spreadsheets.Create(rb).Context(ctx).Do()
